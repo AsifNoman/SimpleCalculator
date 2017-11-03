@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">SimpleCalculatorActivity!</string>
+    <string name="app_name">SimpleCalculator</string>
+    <string name="zeroView">0</string>
+    <string name="oneView">1</string>
+    <string name="twoView">2</string>
+    <string name="threeView">3</string>
+    <string name="fourView">4</string>
+    <string name="fiveView">5</string>
+    <string name="sixView">6</string>
+    <string name="sevenView">7</string>
+    <string name="eightView">8</string>
+    <string name="nineView">9</string>
+    <string name="addView">+</string>
+    <string name="subView">-</string>
+    <string name="multView">x</string>
+    <string name="divView">÷</string>
+    <string name="equalView">=</string>
+     <string name="pointView">.</string>
+    <string name="clearView">CE</string>
+    <string name="eraseView">B</string>
+    <string name="memoryView">M</string>
+    <string name="historyView">H</string>
+    <string name="brace1View">(</string>
+    <string name="brace2View">)</string>
+    <string name="percentView">%</string>
+    <string name="squareView">^</string>
+    
+</resources>

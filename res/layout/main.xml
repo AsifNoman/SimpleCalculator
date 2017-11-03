@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+            android:id="@+id/allView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="40px" />
+
+<TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+                
+        
+     <!-- 1st row -->
+     
+     <TableRow android:layout_width="match_parent" > 
+         
+         <Button 
+            android:id="@+id/history"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/historyView"   
+            />
+         
+         <Button 
+            android:id="@+id/memory"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/memoryView"   
+            />
+         
+         <Button 
+            android:id="@+id/erase"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/eraseView"   
+            />
+         
+         <Button 
+            android:id="@+id/clear"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/clearView"   
+            />
+         
+     </TableRow>
+     
+     <!-- 2nd row -->
+     
+     <TableRow android:layout_width="match_parent" > 
+         
+         <Button 
+            android:id="@+id/brace1"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/brace1View"   
+            />
+         
+         <Button 
+            android:id="@+id/brace2"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/brace2View"   
+            />
+         
+         <Button 
+            android:id="@+id/percent"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/percentView"   
+            />
+         
+         <Button 
+            android:id="@+id/square"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/squareView"   
+            />
+         
+     </TableRow>
+     
+     <!-- 3rd row -->
+     
+     <TableRow android:layout_width="match_parent" > 
+         
+         <Button 
+            android:id="@+id/one"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/oneView"   
+            />
+         
+         <Button 
+            android:id="@+id/two"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/twoView"   
+            />
+         
+         <Button 
+            android:id="@+id/three"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/threeView"   
+            />
+         
+         <Button 
+            android:id="@+id/add"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/addView"   
+            />
+         
+     </TableRow>
+     
+       <!-- 4th row -->
+     
+     <TableRow android:layout_width="match_parent" > 
+         
+         <Button 
+            android:id="@+id/four"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/fourView"   
+            />
+         
+         <Button 
+            android:id="@+id/five"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/fiveView"   
+            />
+         
+         <Button 
+            android:id="@+id/six"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/sixView"   
+            />
+         
+         <Button 
+            android:id="@+id/sub"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/subView"   
+            />
+         
+     </TableRow>
+     
+      <!-- 5th row -->
+     
+     <TableRow android:layout_width="match_parent" > 
+         
+         <Button 
+            android:id="@+id/seven"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/sevenView"   
+            />
+         
+         <Button 
+            android:id="@+id/eight"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/eightView"   
+            />
+         
+         <Button 
+            android:id="@+id/nine"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/nineView"   
+            />
+         
+         <Button 
+            android:id="@+id/mult"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/multView"   
+            />
+         
+     </TableRow>
+     
+     <!-- 7th row -->
+     
+     <TableRow android:layout_width="match_parent" > 
+         
+         <Button 
+            android:id="@+id/point"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/pointView"   
+            />
+         
+         <Button 
+            android:id="@+id/zero"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/zeroView"   
+            />
+         
+         <Button 
+            android:id="@+id/equal"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/equalView"   
+            />
+         
+         <Button 
+            android:id="@+id/div"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/divView"   
+            />
+         
+     </TableRow>
+              
+</TableLayout>  
+
+</LinearLayout>
