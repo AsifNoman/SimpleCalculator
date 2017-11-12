@@ -1,10 +1,13 @@
 package asif.simple.calculator;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SimpleCalculatorActivity extends Activity  {
 	
@@ -61,7 +64,32 @@ public class SimpleCalculatorActivity extends Activity  {
 				String operation = allView.getText().toString();
 				calculat.Calculation(operation.replaceAll("([-+*/%^()])", " $1 "));
 				
-				allView.setText(String.valueOf(calculat.getResult()));
+				allView.setText(allView.getText().toString() + " = " +  String.valueOf(calculat.getResult()));
+			}
+		});
+		
+		memory.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				SharedPreferences saveInfo = getSharedPreferences("operation", Context.MODE_PRIVATE);
+				
+				SharedPreferences.Editor editor = saveInfo.edit();
+				editor.putString("value", allView.getText().toString());
+				editor.commit();
+				
+			}
+		});
+		
+		history.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				SharedPreferences saveInfo = getSharedPreferences("operation", Context.MODE_PRIVATE);
+				
+				String data = saveInfo.getString("value","");
+				allView.setText(data);
+				
 			}
 		});
 		
