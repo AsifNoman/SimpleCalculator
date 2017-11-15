@@ -9,7 +9,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:textSize="40px" />
+            android:textSize="20sp" />
 
 <TableLayout
             android:layout_width="fill_parent"
