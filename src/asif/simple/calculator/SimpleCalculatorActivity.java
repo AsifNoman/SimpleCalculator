@@ -1,8 +1,11 @@
 package asif.simple.calculator;
 
+import java.util.Set;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,9 +65,23 @@ public class SimpleCalculatorActivity extends Activity  {
 			public void onClick(View v) {
 				
 				String operation = allView.getText().toString();
+				String[] matches = new String[] {"++","+-","+*","+/","--","-*","-/","**","*/","//","+%","-%","*%","/%","%%","%^","^^","^+",
+						"^-","^*","^/",".+",".-",".*","./",".%",".^","(.)",")("};
+				
 				calculat.Calculation(operation.replaceAll("([-+*/%^()])", " $1 "));
 				
-				allView.setText(allView.getText().toString() + " = " +  String.valueOf(calculat.getResult()));
+				for (String s : matches)
+				{
+				  if (operation.contains(s))
+				  {
+					  Toast.makeText(getApplicationContext(),calculat.getError(),Toast.LENGTH_LONG).show();
+				  }
+				  else if (!operation.contains(s))
+				  {
+					  allView.setText(String.valueOf(calculat.getResult()));
+				  }
+				}
+				
 			}
 		});
 		
@@ -72,11 +89,19 @@ public class SimpleCalculatorActivity extends Activity  {
 			
 			public void onClick(View v) {
 				
-				SharedPreferences saveInfo = getSharedPreferences("operation", Context.MODE_PRIVATE);
-				
-				SharedPreferences.Editor editor = saveInfo.edit();
-				editor.putString("value", allView.getText().toString());
-				editor.commit();
+				try
+				{
+					SharedPreferences saveInfo = getSharedPreferences( "View" , Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = saveInfo.edit();
+                    String values = saveInfo.getString("Result", "History: ");
+                    String appendedValues = values + allView.getText().toString() + " , ";
+                    editor.putString("Result", appendedValues);
+                    editor.commit();
+				}
+				catch(Exception e)
+				{
+					 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+				}
 				
 			}
 		});
@@ -85,11 +110,34 @@ public class SimpleCalculatorActivity extends Activity  {
 			
 			public void onClick(View v) {
 				
-				SharedPreferences saveInfo = getSharedPreferences("operation", Context.MODE_PRIVATE);
+				try
+				{
+					SharedPreferences saveInfo = getSharedPreferences("View", Context.MODE_PRIVATE);
+					
+					String data = saveInfo.getString("Result","");
+					allView.setText(data);
+				}
+				catch(Exception e)
+				{
+					 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+				}
 				
-				String data = saveInfo.getString("value","");
-				allView.setText(data);
+			}
+		});
+		
+		erase.setOnClickListener(new View.OnClickListener() {		
+			public void onClick(View v) {
 				
+				try
+				{
+					SharedPreferences saveInfo = getSharedPreferences("View", Context.MODE_PRIVATE);
+					saveInfo.edit().remove("Result").commit();
+					Toast.makeText(getApplicationContext(),"Meomory Cleared",Toast.LENGTH_LONG).show();
+				}
+				catch( Exception e)
+				{
+					Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 		
@@ -217,18 +265,6 @@ public class SimpleCalculatorActivity extends Activity  {
 		clear.setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(null);
-			}
-		});
-		
-		erase.setOnClickListener(new View.OnClickListener() {		
-			public void onClick(View v) {
-				
-				int length = allView.getText().length();
-				
-				if (length > 0) {
-					String text = allView.getText().toString();
-					allView.setText(text.substring(0, text.length() - 1));
-				}
 			}
 		});
 	}
