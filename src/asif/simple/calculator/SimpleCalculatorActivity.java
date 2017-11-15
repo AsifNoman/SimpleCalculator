@@ -14,13 +14,10 @@ import android.widget.Toast;
 
 public class SimpleCalculatorActivity extends Activity  {
 	
-	Button zero,one,two,three,four,five,six,seven,eight,nine;
-	Button add,sub,mult,div;
 	Button history,memory,clear,erase;
-	Button brace1,brace2,percent,square;
-	Button point,equal;
 	TextView allView;
 	private calculate calculat = new calculate();
+	Button buttons[] = new Button[20]; 
 	
     /** Called when the activity is first created. */
     @Override
@@ -28,30 +25,30 @@ public class SimpleCalculatorActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        zero = (Button) findViewById(R.id.zero);
-        one = (Button) findViewById(R.id.one);
-        two = (Button) findViewById(R.id.two);
-        three = (Button) findViewById(R.id.three);
-        four = (Button) findViewById(R.id.four);
-        five = (Button) findViewById(R.id.five);
-        six = (Button) findViewById(R.id.six);
-        seven = (Button) findViewById(R.id.seven);
-        eight = (Button) findViewById(R.id.eight);
-        nine = (Button) findViewById(R.id.nine);
-        add = (Button) findViewById(R.id.add);
-        sub = (Button) findViewById(R.id.sub);
-        mult = (Button) findViewById(R.id.mult);
-        div = (Button) findViewById(R.id.div);
+        buttons[0] = (Button) findViewById(R.id.zero);
+        buttons[1] = (Button) findViewById(R.id.one);
+        buttons[2] = (Button) findViewById(R.id.two);
+        buttons[3] = (Button) findViewById(R.id.three);
+        buttons[4] = (Button) findViewById(R.id.four);
+        buttons[5] = (Button) findViewById(R.id.five);
+        buttons[6] = (Button) findViewById(R.id.six);
+        buttons[7] = (Button) findViewById(R.id.seven);
+        buttons[8] = (Button) findViewById(R.id.eight);
+        buttons[9] = (Button) findViewById(R.id.nine);
+        buttons[10] = (Button) findViewById(R.id.add);
+        buttons[11] = (Button) findViewById(R.id.sub);
+        buttons[12] = (Button) findViewById(R.id.mult);
+        buttons[13] = (Button) findViewById(R.id.div);
         history = (Button) findViewById(R.id.history);
         memory = (Button) findViewById(R.id.memory);
         clear = (Button) findViewById(R.id.clear);
         erase = (Button) findViewById(R.id.erase);
-        brace1 = (Button) findViewById(R.id.brace1);
-        brace2 = (Button) findViewById(R.id.brace2);
-        percent = (Button) findViewById(R.id.percent);
-        square = (Button) findViewById(R.id.square);
-        point = (Button) findViewById(R.id.point);
-        equal = (Button) findViewById(R.id.equal);
+        buttons[14] = (Button) findViewById(R.id.brace1);
+        buttons[15] = (Button) findViewById(R.id.brace2);
+        buttons[16] = (Button) findViewById(R.id.percent);
+        buttons[17] = (Button) findViewById(R.id.square);
+        buttons[18] = (Button) findViewById(R.id.point);
+        buttons[19] = (Button) findViewById(R.id.equal);
         allView = (TextView) findViewById(R.id.allView);
     }
 
@@ -60,7 +57,7 @@ public class SimpleCalculatorActivity extends Activity  {
 		
 		super.onResume();
 		
-		equal.setOnClickListener(new View.OnClickListener() {
+		buttons[19].setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				
@@ -97,6 +94,7 @@ public class SimpleCalculatorActivity extends Activity  {
                     String appendedValues = values + allView.getText().toString() + " , ";
                     editor.putString("Result", appendedValues);
                     editor.commit();
+                    Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
 				}
 				catch(Exception e)
 				{
@@ -116,6 +114,14 @@ public class SimpleCalculatorActivity extends Activity  {
 					
 					String data = saveInfo.getString("Result","");
 					allView.setText(data);
+					
+					for(int i = 0 ; i < 20 ; i++)
+					{
+						buttons[i].setEnabled(false);
+					}
+					
+					memory.setEnabled(false);
+					erase.setEnabled(true);
 				}
 				catch(Exception e)
 				{
@@ -141,6 +147,20 @@ public class SimpleCalculatorActivity extends Activity  {
 			}
 		});
 		
+		clear.setOnClickListener(new View.OnClickListener() {		
+			public void onClick(View v) {
+				allView.setText(null);
+				
+				for(int i = 0 ; i < 20 ; i++)
+				{
+					buttons[i].setEnabled(true);
+				}
+				
+				erase.setEnabled(false);
+				memory.setEnabled(true);
+			}
+		});
+		
 	}
 
 	@Override
@@ -148,123 +168,119 @@ public class SimpleCalculatorActivity extends Activity  {
 		// TODO Auto-generated method stub
 		super.onStart();
 		
-		zero.setOnClickListener(new View.OnClickListener() {		
+		erase.setEnabled(false);
+		
+		buttons[0].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "0");
 			}
 		});
 		
-		one.setOnClickListener(new View.OnClickListener() {		
+		buttons[1].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "1");
 			}
 		});
 		
-		two.setOnClickListener(new View.OnClickListener() {		
+		buttons[2].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "2");
 			}
 		});
 		
-		three.setOnClickListener(new View.OnClickListener() {		
+		buttons[3].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "3");
 			}
 		});
 		
-		four.setOnClickListener(new View.OnClickListener() {		
+		buttons[4].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "4");
 			}
 		});
 		
-		five.setOnClickListener(new View.OnClickListener() {		
+		buttons[5].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "5");
 			}
 		});
 		
-		six.setOnClickListener(new View.OnClickListener() {		
+		buttons[6].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "6");
 			}
 		});
 		
-		seven.setOnClickListener(new View.OnClickListener() {		
+		buttons[7].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "7");
 			}
 		});
 		
-		eight.setOnClickListener(new View.OnClickListener() {		
+		buttons[8].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "8");
 			}
 		});
 		
-		nine.setOnClickListener(new View.OnClickListener() {		
+		buttons[9].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "9");
 			}
 		});
 		
-		add.setOnClickListener(new View.OnClickListener() {		
+		buttons[10].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "+");
 			}
 		});
 		
-		sub.setOnClickListener(new View.OnClickListener() {		
+		buttons[11].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "-");
 			}
 		});
 		
-		mult.setOnClickListener(new View.OnClickListener() {		
+		buttons[12].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "*");
 			}
 		});
 		
-		div.setOnClickListener(new View.OnClickListener() {		
+		buttons[13].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "/");
 			}
 		});
 		
-		brace1.setOnClickListener(new View.OnClickListener() {		
+		buttons[14].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "(");
 			}
 		});
 		
-		brace2.setOnClickListener(new View.OnClickListener() {		
+		buttons[15].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + ")");
 			}
 		});
 		
-		percent.setOnClickListener(new View.OnClickListener() {		
+		buttons[16].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "%");
 			}
 		});
 		
-		square.setOnClickListener(new View.OnClickListener() {		
+		buttons[17].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + "^");
 			}
 		});
 		
-		point.setOnClickListener(new View.OnClickListener() {		
+		buttons[18].setOnClickListener(new View.OnClickListener() {		
 			public void onClick(View v) {
 				allView.setText(allView.getText().toString() + ".");
-			}
-		});
-		
-		clear.setOnClickListener(new View.OnClickListener() {		
-			public void onClick(View v) {
-				allView.setText(null);
 			}
 		});
 	}
