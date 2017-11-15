@@ -20,8 +20,8 @@
     <string name="equalView">=</string>
      <string name="pointView">.</string>
     <string name="clearView">CE</string>
-    <string name="eraseView">B</string>
-    <string name="memoryView">M</string>
+    <string name="eraseView">ME</string>
+    <string name="memoryView">M+</string>
     <string name="historyView">H</string>
     <string name="brace1View">(</string>
     <string name="brace2View">)</string>
